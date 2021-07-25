@@ -21,10 +21,10 @@ else
 fi
 fdt get value bootargs /chosen bootargs
 
-setenv bootargs "@@LINUX_KERNEL_CMDLINE_DEFAULTS@@ ${bootargs} @@LINUX_KERNEL_CMDLINE@@"
-@@UBOOT_ENV_EXTRA@@
+setenv bootargs " ${bootargs} quiet splash"
 
-@@UBOOT_PREBOOT_EXTRA@@
+
+
 
 setenv kernel_filename vmlinuz
 setenv core_state "/uboot/ubuntu/boot.sel"
@@ -43,7 +43,7 @@ for pathprefix in ${fk_image_locations}; do
     setenv kernel_vars "snap_kernel snap_try_kernel kernel_status"
     setenv recovery_vars "snapd_recovery_mode snapd_recovery_system snapd_recovery_kernel"
     setenv snapd_recovery_mode "install"
-    setenv snapd_standard_params "panic=-1"
+    setenv snapd_standard_params "panic=-1 systemd.gpt_auto=0 rd.systemd.unit=basic.target"
 
     env import -c ${kernel_addr_r} ${filesize} ${recovery_vars}
     setenv bootargs "${bootargs} snapd_recovery_mode=${snapd_recovery_mode} snapd_recovery_system=${snapd_recovery_system} ${snapd_standard_params}"
