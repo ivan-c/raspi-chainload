@@ -1,3 +1,4 @@
+# https://git.launchpad.net/ubuntu/+source/flash-kernel/plain/bootscript/all/bootscr.rpi
 # Ubuntu Classic RPi U-Boot script (for armhf and arm64)
 
 # Expects to be called with the following environment variables set:
