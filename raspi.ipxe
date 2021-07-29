@@ -10,7 +10,7 @@ set initrd_uri file:/initrd.img
 #kernel ${kernel_uri} initrd=initrd.img earlyprintk dwc_otg.lpm_enable=0 console=tty1 root=/dev/nfs nfsroot=192.168.1.154:/doduo/system-images/rpi3b/debian-arm64/${hostname},vers=3 rw ip=dhcp rootwait elevator=deadline
 
 
-
+# TODO parameterize
 #console=serial0,115200 console=tty1
 kernel nfs://doduo/doduo/system-images/rpi3b/debian-arm64/${hostname}/boot/vmlinuz \
   initrd=initrd.img \
