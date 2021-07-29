@@ -1,16 +1,16 @@
 #!ipxe
 
-set base_nfs_uri nfs://doduo/doduo/system-images/rpi3b/debian-arm64/${hostname}
+set base_nfs_path /doduo/system-images/rpi3b/debian-arm64/${hostname}
 
 set kernel_uri file:/vmlinuz
 set initrd_uri file:/initrd.img
 
 
 # TODO parameterize
-kernel ${base_nfs_uri}/boot/vmlinuz \
+kernel nfs://doduo${base_nfs_path}/boot/vmlinuz \
   initrd=initrd.img \
   root=/dev/nfs \
-  nfsroot=192.168.1.154:/doduo/system-images/rpi3b/debian-arm64/${hostname},vers=3 rw \
+  nfsroot=192.168.1.154:${base_nfs_path},vers=3 rw \
   rootwait \
   ip=dhcp \
   console=ttyAMA0,115200 \
@@ -18,6 +18,6 @@ kernel ${base_nfs_uri}/boot/vmlinuz \
   earlycon=uart8250,mmio32,0x3f215040 # write early kernel console to serial
 
 initrd \
-  ${base_nfs_uri}/boot/initrd.img
+  nfs://doduo${base_nfs_path}/boot/initrd.img
 
 boot
