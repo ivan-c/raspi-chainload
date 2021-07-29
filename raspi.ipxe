@@ -21,7 +21,6 @@ kernel nfs://doduo/doduo/system-images/rpi3b/debian-arm64/${hostname}/boot/vmlin
   rw \
   ip=dhcp \
   rootwait \
-  elevator=deadline \
   earlyprintk \
   earlycon=uart8250,mmio32,0x3f215040 # write early kernel console to serial
 
