@@ -8,13 +8,12 @@ set initrd_uri file:/initrd.img
 #console=serial0,115200 console=tty1
 kernel nfs://doduo/doduo/system-images/rpi3b/debian-arm64/${hostname}/boot/vmlinuz \
   initrd=initrd.img \
+  root=/dev/nfs \
+  nfsroot=192.168.1.154:/doduo/system-images/rpi3b/debian-arm64/${hostname},vers=3 rw \
+  rootwait \
+  ip=dhcp \
   console=tty1 \
   console=ttyAMA0,115200 \
-  root=/dev/nfs \
-  nfsroot=192.168.1.154:/doduo/system-images/rpi3b/debian-arm64/${hostname},vers=3 \
-  rw \
-  ip=dhcp \
-  rootwait \
   earlyprintk \
   earlycon=uart8250,mmio32,0x3f215040 # write early kernel console to serial
 
