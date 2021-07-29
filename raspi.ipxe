@@ -15,7 +15,6 @@ set initrd_uri file:/initrd.img
 kernel nfs://doduo/doduo/system-images/rpi3b/debian-arm64/${hostname}/boot/vmlinuz \
   initrd=initrd.img \
   earlyprintk \
-  dwc_otg.lpm_enable=0 \
   console=tty1 \
   console=ttyAMA0,115200 \
   root=/dev/nfs \
