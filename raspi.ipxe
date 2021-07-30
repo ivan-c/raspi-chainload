@@ -8,17 +8,17 @@ set base_nfs_path /doduo/system-images/rpi3b/debian-arm64/${hostname}
 
 
 # TODO parameterize
-kernel nfs://${nfs_hostname}${base_nfs_path}/boot/vmlinuz \
-  initrd=initrd.img \
-  root=/dev/nfs \
-  nfsroot=${nfs_ip_address}:${base_nfs_path},vers=3 rw \
-  rootwait \
-  ip=dhcp \
-  console=ttyAMA0,115200 \
-  earlyprintk \
-  earlycon=uart8250,mmio32,0x3f215040 # write early kernel console to serial
+kernel \
+    nfs://${nfs_hostname}${base_nfs_path}/boot/vmlinuz \
+    initrd=initrd.img \
+    root=/dev/nfs nfsroot=${nfs_ip_address}:${base_nfs_path},vers=3 rw rootwait \
+    ip=dhcp \
+    console=tty1 \
+    console=ttyAMA0,115200 \
+    earlyprintk \
+    earlycon=uart8250,mmio32,0x3f215040 # write early kernel console to serial
 
 initrd \
-  nfs://${nfs_hostname}${base_nfs_path}/boot/initrd.img
+    nfs://${nfs_hostname}${base_nfs_path}/boot/initrd.img
 
 boot
