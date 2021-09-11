@@ -15,8 +15,7 @@ kernel \
     ip=dhcp \
     console=tty1 \
     console=ttyAMA0,115200 \
-    earlyprintk \
-    earlycon=uart8250,mmio32,0x3f215040 # write early kernel console to serial
+    earlyprintk
 
 initrd \
     nfs://${nfs_hostname}${base_nfs_path}/boot/initrd.img
