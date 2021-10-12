@@ -30,4 +30,5 @@ setenv bootargs " ${bootargs} quiet splash"
 load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} ipxe.efi
 
 echo "Booting iPXE (with bootefi) from ${devtype} ${devnum}:${distro_bootpart}..."
-bootefi ${kernel_addr_r} ${fdt_addr_r}
+# reset if timeout on 'lan78xx_eth Waiting for PHY auto negotiation to complete'
+bootefi ${kernel_addr_r} ${fdt_addr_r} || reset
