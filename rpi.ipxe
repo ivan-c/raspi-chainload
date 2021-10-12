@@ -7,6 +7,10 @@ set nfs_hostname doduo
 echo Attempting to boot from ${nfs_hostname}...
 chain --replace --autofree http://${nfs_hostname}:8000/raspi.ipxe
 
+set boot_pause 300
+echo Sleeping ${boot_pause} seconds to allow for reprovisioning
+sleep  ${boot_pause}
+
 
 # linux kernel requires NFS server IP address
 nslookup nfs_ip_address ${nfs_hostname}
