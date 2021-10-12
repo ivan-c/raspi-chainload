@@ -1,6 +1,13 @@
 #!ipxe
+# loaded by ipxe.efi
 
 set nfs_hostname doduo
+
+# for debugging, attempt loading override script via HTTP
+echo Attempting to boot from ${nfs_hostname}...
+chain --replace --autofree http://${nfs_hostname}:8000/raspi.ipxe
+
+
 # linux kernel requires NFS server IP address
 nslookup nfs_ip_address ${nfs_hostname}
 
