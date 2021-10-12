@@ -20,4 +20,4 @@ kernel \
 initrd \
     nfs://${nfs_hostname}${base_nfs_path}/boot/initrd.img
 
-boot
+boot || reboot
