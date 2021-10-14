@@ -1,5 +1,5 @@
 #!ipxe
-# loaded by ipxe.efi
+# loaded by iPXE script embedded in ipxe.efi binary
 
 set nfs_hostname doduo
 
@@ -18,7 +18,7 @@ nslookup nfs_ip_address ${nfs_hostname}
 set base_nfs_path /doduo/system-images/rpi3b/debian-arm64/${hostname}
 
 
-# TODO parameterize
+# TODO group into individually documented variables
 kernel \
     nfs://${nfs_hostname}${base_nfs_path}/boot/vmlinuz \
     initrd=initrd.img \
