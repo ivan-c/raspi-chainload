@@ -5,7 +5,7 @@ set nfs_hostname doduo
 
 # for debugging, attempt loading override script via HTTP
 echo Attempting to boot from ${nfs_hostname}...
-chain --replace --autofree http://${nfs_hostname}:8000/raspi.ipxe
+chain --replace --autofree http://${nfs_hostname}:8000/raspi.ipxe || echo Failed to download override script; skipping
 
 set boot_pause 300
 echo Sleeping ${boot_pause} seconds to allow for reprovisioning
