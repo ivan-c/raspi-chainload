@@ -26,6 +26,7 @@ kernel \
     ip=dhcp \
     console=tty0 \
     console=ttyS1,115200 \
+    panic=300 \
     earlyprintk
 
 initrd \
